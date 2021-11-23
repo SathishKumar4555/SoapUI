@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="56bdf41c-4b61-40a1-a98c-4021b06f4eac" activeEnvironment="Default" name="studentDetailsWsdl" resourceRoot="" soapui-version="5.6.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="dc094f07-f98c-4a0a-b9bd-5202b0d7c1f4" wsaVersion="NONE" name="studentPortSoap11" type="wsdl" bindingName="{http://www.example.com/demo/school}studentPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/service/studentDetailsWsdl.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="CreateWsdlDocumentationAction@report-directory">C:\Users\Sathish Kumar\Documents</con:setting></con:settings><con:definitionCache type="TEXT" rootPart="http://localhost:8080/service/studentDetailsWsdl.wsdl"><con:part><con:url>http://localhost:8080/service/studentDetailsWsdl.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://www.example.com/demo/school" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.example.com/demo/school" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.com/demo/school">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.example.com/demo/school" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="StudentDetailsRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="StudentDetailsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Student" type="tns:Student"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="Student">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="standard" type="xs:int"/>
+          <xs:element name="address" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="StudentDetailsResponse">
+    <wsdl:part element="tns:StudentDetailsResponse" name="StudentDetailsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="StudentDetailsRequest">
+    <wsdl:part element="tns:StudentDetailsRequest" name="StudentDetailsRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="studentPort">
+    <wsdl:operation name="StudentDetails">
+      <wsdl:input message="tns:StudentDetailsRequest" name="StudentDetailsRequest"></wsdl:input>
+      <wsdl:output message="tns:StudentDetailsResponse" name="StudentDetailsResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="studentPortSoap11" type="tns:studentPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="StudentDetails">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="StudentDetailsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="StudentDetailsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="studentPortService">
+    <wsdl:port binding="tns:studentPortSoap11" name="studentPortSoap11">
+      <soap:address location="http://localhost:8080/service"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/service</con:endpoint></con:endpoints><con:operation id="0febb72c-bded-4b23-a8b7-973dc466df17" isOneWay="false" action="" name="StudentDetails" bindingOperationName="StudentDetails" type="Request-Response" outputName="StudentDetailsResponse" inputName="StudentDetailsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3202338a-11b8-45fa-a40d-5fc87276a6ca" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/service</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sch="http://www.example.com/demo/school">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <sch:StudentDetailsRequest>\r
+         <sch:name>Kajal</sch:name>\r
+      </sch:StudentDetailsRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.com/demo/school/studentPort/StudentDetailsRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="18c32f8a-e590-4586-a751-7ffb5a87360a" name="studentPortSoap11 TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="e2e63dd8-1785-4eb8-8254-9357a9bfb2a3" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="StudentDetails TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="8f22d3cb-fb1c-4a90-9cb1-eacf5fbca9b7" name="StudentDetails"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>studentPortSoap11</con:interface><con:operation>StudentDetails</con:operation><con:request name="StudentDetails" id="b0d20f7f-92c8-4549-88da-f6d84f711b3f"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/service</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sch="http://www.example.com/demo/school">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <sch:StudentDetailsRequest>\r
+         <sch:name>?</sch:name>\r
+      </sch:StudentDetailsRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="Simple Contains" id="cc45711c-42e5-46f1-b363-33035eb21846" name="Contains"><con:configuration><token/><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://www.example.com/demo/school/studentPort/StudentDetailsRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
